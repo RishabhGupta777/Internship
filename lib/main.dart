@@ -5,6 +5,7 @@ import 'package:challenge1/FlashChat/screens/login_screen.dart';
 import 'package:challenge1/FlashChat/screens/registration_screen.dart';
 import 'package:challenge1/FlashChat/screens/welcome_screen.dart';
 import 'package:challenge1/Task1.dart';
+import 'package:challenge1/Task2/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    home:Task1(),
+    home:LoginPage(),
 
       //   initialRoute: CheckUser.id,
       // routes: {     //map due to {}
