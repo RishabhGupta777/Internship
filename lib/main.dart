@@ -1,3 +1,4 @@
+import 'package:challenge1/Clima/screens/loading_screen.dart';
 import 'package:challenge1/FlashChat/components/checkuser.dart';
 import 'package:challenge1/FlashChat/screens/chat_screen.dart';
 import 'package:challenge1/FlashChat/screens/home_page.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    home:LoginPage(),
+    home:LoadingScreen(),
 
       //   initialRoute: CheckUser.id,
       // routes: {     //map due to {}
