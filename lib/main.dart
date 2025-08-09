@@ -1,20 +1,27 @@
-import 'package:challenge1/Clima/screens/loading_screen.dart';
-import 'package:challenge1/FlashChat/components/checkuser.dart';
-import 'package:challenge1/FlashChat/screens/chat_screen.dart';
-import 'package:challenge1/FlashChat/screens/home_page.dart';
-import 'package:challenge1/FlashChat/screens/login_screen.dart';
-import 'package:challenge1/FlashChat/screens/registration_screen.dart';
-import 'package:challenge1/FlashChat/screens/welcome_screen.dart';
-import 'package:challenge1/Task1.dart';
-import 'package:challenge1/Task2/login_page.dart';
+import 'package:challenge1/ProviderTask/Task1/counter_provider.dart';
+import 'package:challenge1/ProviderTask/Task2/list_map_provider.dart';
+import 'package:challenge1/ProviderTask/Task3/db_provider.dart';
+import 'package:challenge1/ProviderTask/Task3/home_page.dart';
+import 'package:challenge1/ProviderTask/Task3/theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // Initialize Firebase
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ListMapProvider()),
+        ChangeNotifierProvider(create: (context) => CounterProvider()),
+        ChangeNotifierProvider(create: (context) => DBProvider()),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ],
+      child: const MyApp(), // Use 'const' with the constructor to improve performance.
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +32,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-    home:LoadingScreen(),
+      themeMode: context.watch<ThemeProvider>().getThemeValue() ? ThemeMode.dark : ThemeMode.light,
+      darkTheme: ThemeData.dark(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+    home:Task3HomePage(),
 
       //   initialRoute: CheckUser.id,
       // routes: {     //map due to {}
