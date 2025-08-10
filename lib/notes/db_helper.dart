@@ -24,13 +24,13 @@ class DBHelper {
       myDB = await openDB();
       return myDB!;
     }
+  ///uper wale itne bare if ke function ko chhota krke ye bhi likha jaa sakta h jo niche likha h due to return myDb! bar bar aa raha h
+  //   myDB ??= await openDB();
+  //   return myDB!;
+
   }
 
-  // A more concise way to get or create the database instance
-  Future<Database> getDBConcise() async {
-    myDB ??= await openDB();
-    return myDB!;
-  }
+
 
   // Open the database or create it if it doesn't exist
   Future<Database> openDB() async {
