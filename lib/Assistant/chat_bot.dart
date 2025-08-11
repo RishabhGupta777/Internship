@@ -24,7 +24,7 @@ class _ChatBotState extends State<ChatBot> {
     return Scaffold(
 
         appBar: AppBar(
-          title: const Text('AI Assistant'),
+          title: const Text('ChatBot!'),
           centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
