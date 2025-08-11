@@ -75,7 +75,7 @@ class _ChatBotState extends State<ChatBot> {
   }
 
   void getResponse()async{
-    String apiKey="AIzaSyCMMw0ElJwUy3BwQWri06bm52CrJCy-cXY";
+    String apiKey="";
     String Url="https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey";
 
     setState(() {
