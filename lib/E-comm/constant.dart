@@ -1,8 +1,11 @@
+import 'package:challenge1/E-comm/view/screens/account_page.dart';
 import 'package:challenge1/E-comm/view/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+
+import 'controller/auth_controller.dart';
 
 
 // getRandomColor() => Colors.primaries[Random().nextInt(Colors.primaries.length)];
@@ -21,7 +24,7 @@ const borderColor = Colors.grey;
 var pageindex = [
   Text('Home'),
   Text('Categories'),
-  LoginScreen(),
-  Text('Messages'),
+  AuthController.instance.isLoggedIn ? AccountPage() : LoginScreen(),
+  Text('Chats'),
   Text('Profile')
 ];

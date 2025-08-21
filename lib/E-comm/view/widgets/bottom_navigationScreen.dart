@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import '../../constant.dart';
+import '../../controller/auth_controller.dart';
+import '../screens/account_page.dart';
+import '../screens/auth/login_screen.dart';
 class BottomNavigationScreen extends StatefulWidget {
   BottomNavigationScreen({Key? key}) : super(key: key);
 
@@ -56,7 +60,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
             BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.whatsapp, size: 25),
-                label: 'Messages'
+                label: 'Chats'
 
             ),
 
@@ -68,9 +72,19 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ],
         ),
       ),
-      body: Center(
-        child: pageindex[pageIdx],
-      ),
+      body:Center(
+        child: Obx(() {  //taki lagout karne ke baad account page me change hoker
+      final pages = [
+        const Text('Home'),
+        const Text('Categories'),
+        AuthController.instance.isLoggedIn ? const AccountPage() : LoginScreen(),
+        const Text('Chats'),
+        const Text('Profile'),
+      ];
+      return pages[pageIdx];
+        }),
+    ),
+
     );
   }
 }

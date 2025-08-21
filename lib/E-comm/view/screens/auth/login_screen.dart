@@ -1,5 +1,8 @@
+import 'package:challenge1/E-comm/view/screens/auth/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
 
 
 
@@ -47,10 +50,21 @@ class LoginScreen extends StatelessWidget {
             }, child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 50 , vertical: 10),
 
-                child: Text("Login")))
+                child: Text("Login"))),
+            SizedBox(height: 30,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Not have any account??"),
+                TextButton(
+                  onPressed: () => Get.to(() => SignUpScreen()),
+                  child: Text("Signup",style: TextStyle(color: Colors.redAccent,fontSize:20,fontWeight: FontWeight.w500 ),),
+                ),
+              ],
+            )
           ],
         ),
-
+ 
       ),
     );
   }

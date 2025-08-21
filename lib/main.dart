@@ -1,4 +1,5 @@
 import 'package:challenge1/Assistant/chat_bot.dart';
+import 'package:challenge1/E-comm/view/screens/auth/sign_up_screen.dart';
 import 'package:challenge1/E-comm/view/widgets/bottom_navigationScreen.dart';
 import 'package:challenge1/ProviderTask/Task1/counter_provider.dart';
 import 'package:challenge1/ProviderTask/Task2/list_map_provider.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       themeMode: context.watch<ThemeProvider>().getThemeValue() ? ThemeMode.dark : ThemeMode.light,
       darkTheme: ThemeData.dark(),
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-    home:BottomNavigationScreen(),
+    home:SignUpScreen(),
 
       //   initialRoute: CheckUser.id,
       // routes: {     //map due to {}

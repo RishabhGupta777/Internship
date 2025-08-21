@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:challenge1/E-comm/view/widgets/bottom_navigationScreen.dart';
+import 'package:challenge1/notes/notes_homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,6 @@ import '../view/screens/auth/login_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
-File? proimg;
 
 
 //User State Persistence
@@ -35,13 +35,14 @@ File? proimg;
 
   _setInitialView(User? user){
     if(user == null){
-      Get.offAll(()=> LoginScreen());
+      Get.offAll(()=> BottomNavigationScreen());
     }else{
-      Get.offAll(() => BottomNavigationScreen());
+      Get.offAll(() =>BottomNavigationScreen());
     }
   }
 
-
+///User login or not in the variable
+  bool get isLoggedIn => _user.value != null;
 
   //User Register
 
@@ -74,6 +75,7 @@ File? proimg;
     try{
   if(email.isNotEmpty && password.isNotEmpty){
     await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+    print('login ho gya');
   }else{
     Get.snackbar("Error Logging In", "Please enter all the fields");
     print('put all values');
@@ -86,4 +88,10 @@ print('something went wrong');
 
     }
   }
+
+  //for log Out
+  void logout() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
 }
