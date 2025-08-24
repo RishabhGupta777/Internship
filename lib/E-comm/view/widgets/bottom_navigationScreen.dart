@@ -77,7 +77,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       final pages = [
         const Text('Home'),
         const Text('Categories'),
-        AuthController.instance.isLoggedIn ? const AccountPage() : LoginScreen(),
+        AuthController.instance.isLoggedIn ?  AccountPage() : LoginScreen(),
         const Text('Chats'),
         const Text('Profile'),
       ];

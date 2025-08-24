@@ -16,7 +16,8 @@ class AuthController extends GetxController {
 //User State Persistence
 
 
-   late Rx<User?> _user;
+
+  final Rx<User?> _user = Rx<User?>(FirebaseAuth.instance.currentUser);
   User get user => _user.value!;
 
 // _user  - Nadi
@@ -26,7 +27,6 @@ class AuthController extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    _user = Rx<User?>(FirebaseAuth.instance.currentUser);
     _user.bindStream(FirebaseAuth.instance.authStateChanges());
     ever(_user, _setInitialView);
 
