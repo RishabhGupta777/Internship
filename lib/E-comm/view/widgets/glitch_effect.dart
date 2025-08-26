@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 
 import '../../constant.dart';
 
-class GlithEffect extends StatefulWidget {
-  GlithEffect({required this.child});
+class GlitchEffect extends StatefulWidget {
+  GlitchEffect({required this.child});
 
   final Widget child;
 
   @override
-  _GlithEffectState createState() => _GlithEffectState();
+  _GlitchEffectState createState() => _GlitchEffectState();
 }
 
-class _GlithEffectState extends State<GlithEffect>
+class _GlitchEffectState extends State<GlitchEffect>
     with SingleTickerProviderStateMixin {
   late GlitchController _controller;
   late Timer _timer;

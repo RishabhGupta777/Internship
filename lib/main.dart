@@ -1,4 +1,3 @@
-import 'package:challenge1/E-comm/view/screens/auth/sign_up_screen.dart';
 import 'package:challenge1/E-comm/view/widgets/bottom_navigationScreen.dart';
 import 'package:challenge1/ProviderTask/Task1/counter_provider.dart';
 import 'package:challenge1/ProviderTask/Task2/list_map_provider.dart';

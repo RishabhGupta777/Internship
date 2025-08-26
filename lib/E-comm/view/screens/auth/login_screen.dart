@@ -1,23 +1,36 @@
 import 'package:challenge1/E-comm/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
+import '../../../controller/internet_provider.dart';
+import '../../widgets/base_scaffold.dart';
 import '../../widgets/button.dart';
 import '../../widgets/rounded_contaianer.dart';
 import '../../widgets/text_input.dart';
-import '../../widgets/glitch.dart';
+import '../../widgets/glitch_effect.dart';
 import '../auth/sign_up_screen.dart';
 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<InternetProvider>().checkConnection();
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScaffold(
       backgroundColor:Color(0xFFF4F8FB),
       body: Center(
         child: TRoundedContainer(
@@ -34,7 +47,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               /// Title
               const SizedBox(height: 10),
-              GlithEffect(
+              GlitchEffect(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [

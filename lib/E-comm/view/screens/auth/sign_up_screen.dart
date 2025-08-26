@@ -1,21 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
-import '../../widgets/glitch.dart';
+import '../../../controller/internet_provider.dart';
+import '../../widgets/base_scaffold.dart';
+import '../../widgets/glitch_effect.dart';
 import '../../widgets/text_input.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
    SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _emailController = new TextEditingController();
+
   TextEditingController _usernameController = new TextEditingController();
+
   TextEditingController _setpasswordController = new TextEditingController();
+
   TextEditingController _confirmpasswordController = new TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    context.read<InternetProvider>().checkConnection();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScaffold(
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 100),
@@ -25,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              GlithEffect(child: const Text("Welcome To Alisan E-Comm" ,style: TextStyle(fontWeight: FontWeight.w900 , fontSize: 30),)),
+              GlitchEffect(child: const Text("Welcome To Alisan E-Comm" ,style: TextStyle(fontWeight: FontWeight.w900 , fontSize: 30),)),
               SizedBox(height: 25,),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
