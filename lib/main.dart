@@ -1,14 +1,18 @@
+import 'package:challenge1/Clima/screens/loading_screen.dart';
 import 'package:challenge1/E-comm/view/widgets/bottom_navigationScreen.dart';
 import 'package:challenge1/ProviderTask/Task1/counter_provider.dart';
 import 'package:challenge1/ProviderTask/Task2/list_map_provider.dart';
 import 'package:challenge1/ProviderTask/Task3/db_provider.dart';
 import 'package:challenge1/ProviderTask/Task3/theme_provider.dart';
+import 'package:challenge1/Task1.dart';
+import 'package:challenge1/Task2/login_page.dart';
 import 'package:challenge1/notes/db_helper.dart';
 import 'package:challenge1/notes/notes_db_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'Counter/counter_screen.dart';
 import 'E-comm/controller/auth_controller.dart';
 import 'E-comm/controller/internet_controller.dart';
 import 'E-comm/controller/internet_provider.dart';
@@ -17,8 +21,8 @@ import 'E-comm/controller/internet_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value){   // Initialize Firebase
-    Get.put(AuthController());
-    Get.put(InternetController());
+    // Get.put(AuthController());
+    // Get.put(InternetController());
   });
   runApp(
     MultiProvider(
@@ -49,7 +53,8 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-    home:BottomNavigationScreen(),
+    home: CounterScreen(),
+    // BottomNavigationScreen(),
 
     );
   }
